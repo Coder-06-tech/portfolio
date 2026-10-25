@@ -26,14 +26,7 @@ npm run build
 
 This outputs a static site to `dist/`, which you can deploy anywhere (Vercel, Netlify, GitHub Pages, etc.).
 
-### Deploying to Vercel / Netlify
-Just point them at this repo — they auto-detect Vite and run `npm run build` for you.
-
-### Deploying to GitHub Pages
-Since this uses `BrowserRouter` (clean URLs, not `#/hash` routes), GitHub Pages needs a small
-redirect trick to handle direct links/refreshes on sub-routes (e.g. someone opening
-`/projects` directly). If you go this route, let me know and I can add the `404.html`
-redirect workaround, or switch you to `HashRouter` for a zero-config setup.
+###Deployed Link-https://portfolio-react-simronsarita-1748-simronsarita-1748s-projects.vercel.app/
 
 ## Project structure
 
