@@ -1,65 +1,69 @@
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, Link } from 'react-router-dom'
+import { Sparkles } from 'lucide-react'
 
 const NAV = [
-  { to: '/', label: 'about', ext: '.md', end: true },
-  { to: '/projects', label: 'projects', ext: '/' },
-  { to: '/experience', label: 'experience', ext: '.log' },
-  { to: '/skills', label: 'skills', ext: '.json' },
-  { to: '/education', label: 'education', ext: '.md' },
-  { to: '/contact', label: 'contact', ext: '.sh' },
+  { to: '/', label: 'About', end: true },
+  { to: '/projects', label: 'Projects' },
+  { to: '/experience', label: 'Experience' },
+  { to: '/skills', label: 'Skills' },
+  { to: '/education', label: 'Education' },
+  { to: '/contact', label: 'Contact' },
 ]
 
 export default function Layout() {
   return (
-    <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4 sm:p-8">
-      <div className="w-full max-w-4xl bg-slate-900 border border-slate-800 rounded-xl shadow-2xl overflow-hidden">
-        {/* title bar */}
-        <div className="flex items-center gap-4 px-5 py-3 bg-slate-800 border-b border-slate-700">
-          <div className="flex gap-1.5 shrink-0">
-            <span className="w-2.5 h-2.5 rounded-full bg-rose-400" />
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
-          </div>
-          <div className="hidden sm:block flex-1 text-center font-mono text-xs text-slate-500">
-            <span className="text-slate-400">simron-sarita</span> — portfolio — code editor
-          </div>
-        </div>
+    <div className="relative min-h-screen bg-[#030712] text-slate-200 flex flex-col font-sans overflow-hidden">
+      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-sky-500/5 glow-blob animate-pulse-slow" />
+      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[500px] h-[500px] rounded-full bg-purple-500/5 glow-blob animate-pulse-slow" />
 
-        {/* navbar */}
-        <nav className="flex overflow-x-auto bg-slate-900 border-b border-slate-800">
-          {NAV.map((item) => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              end={item.end}
-              className={({ isActive }) =>
-                `relative font-mono text-xs px-4 sm:px-5 py-3 whitespace-nowrap border-r border-slate-800 transition-colors ${
-                  isActive
-                    ? 'text-slate-100 bg-slate-950'
-                    : 'text-slate-500 hover:text-slate-300 hover:bg-slate-800/60'
-                }`
-              }
-            >
-              {({ isActive }) => (
-                <>
-                  {item.label}
-                  <span className="text-slate-600">{item.ext}</span>
-                  {isActive && <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-sky-400" />}
-                </>
-              )}
-            </NavLink>
-          ))}
-        </nav>
+      <div className="relative w-full max-w-5xl mx-auto px-6 sm:px-8 flex flex-col min-h-screen z-10">
+        
+        <header className="flex items-center justify-between py-6 sm:py-8 border-b border-slate-900 shrink-0">
+          <Link 
+            to="/" 
+            className="flex items-center gap-2 group focus:outline-none"
+          >
+            <span className="text-lg sm:text-xl font-extrabold tracking-tight bg-gradient-to-r from-sky-400 to-indigo-400 bg-clip-text text-transparent group-hover:opacity-90 transition-opacity">
+              Simron Sarita
+            </span>
+          </Link>
+          
+          {/* Navigation Links */}
+          <nav className="flex items-center gap-1 sm:gap-6 overflow-x-auto scrollbar-none py-1">
+            {NAV.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                end={item.end}
+                className={({ isActive }) =>
+                  `text-sm font-medium px-2.5 py-1.5 sm:px-3 rounded-md transition-all whitespace-nowrap ${
+                    isActive
+                      ? 'text-sky-400 bg-sky-950/20'
+                      : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/40'
+                  }`
+                }
+              >
+                {item.label}
+              </NavLink>
+            ))}
+          </nav>
+        </header>
 
-        {/* routed page content */}
-        <div className="bg-slate-950">
+        {/* Page Content area */}
+        <main className="flex-1 py-8 sm:py-12 flex flex-col">
           <Outlet />
-        </div>
+        </main>
 
-        {/* footer */}
-        <div className="text-center py-5 font-mono text-xs text-slate-600 border-t border-slate-800">
-          built by Simron Sarita · {new Date().getFullYear()}
-        </div>
+        {/* Standard Web Footer */}
+        <footer className="py-8 border-t border-slate-900 shrink-0 flex flex-col sm:flex-row items-center justify-between gap-4 select-none">
+          <div className="text-xs text-slate-500 font-mono">
+            © {new Date().getFullYear()} Simron Sarita. All rights reserved.
+          </div>
+          <div className="flex items-center gap-1.5 text-xs text-slate-600 font-mono">
+            <span>Built with React &amp; Tailwind CSS</span>
+          </div>
+        </footer>
+
       </div>
     </div>
   )

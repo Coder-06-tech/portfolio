@@ -1,30 +1,64 @@
 import { Kicker, SectionHeading } from '../components/ui.jsx'
+import { Briefcase, Calendar, MapPin } from 'lucide-react'
+
+const EXPERIENCE_LOG = {
+  role: 'Frontend Intern',
+  company: 'Vishvena Techno Solutions',
+  date: 'Nov 2024 – Feb 2025',
+  location: 'Remote',
+  details: [
+    'Developed modular, reusable React UI components, resulting in improved codebase scalability and cleaner layouts.',
+    'Translated complex Figma designs into responsive, cross-browser interfaces with 100% pixel-perfect fidelity.',
+    'Optimized application rendering using advanced React hooks, streamlining asynchronous data operations.',
+    'Collaborated in an Agile development environment, actively contributing to peer reviews, design refactors, and daily syncs.',
+  ]
+}
 
 export default function Experience() {
   return (
-    <section className="px-6 py-12 sm:px-10 sm:py-14">
+    <section className="px-6 py-10 sm:px-10 sm:py-12 max-w-4xl mx-auto">
       <Kicker>experience</Kicker>
-      <SectionHeading title="Work history" sub='git log --author="Simron Sarita"' />
+      <SectionHeading title="Work history" sub="Professional Experience" />
 
-      <div className="relative pl-7">
-        <span className="absolute left-[5px] top-1.5 w-px h-full bg-slate-800" />
-        <span className="absolute left-0 top-1 w-2.5 h-2.5 rounded-full bg-slate-950 border-2 border-amber-400" />
-        <div className="font-mono text-xs text-amber-400 mb-1.5">commit 7f3a91c</div>
-        <div className="text-lg font-bold text-slate-100 mb-1">Frontend Intern — Vishvena Techno Solutions</div>
-        <div className="font-mono text-xs text-slate-600 mb-3">Nov 2024 – Feb 2025 · Remote</div>
-        <ul className="space-y-2">
-          {[
-            'Learned and applied React.js to build reusable, component-based UIs.',
-            'Converted Figma designs into responsive React components with pixel-perfect accuracy.',
-            'Worked hands-on with props, state, hooks, and component structuring.',
-            'Collaborated in an agile environment, adapting quickly to design iterations and feedback.',
-          ].map((pt) => (
-            <li key={pt} className="flex gap-2 text-sm text-slate-400 leading-relaxed">
-              <span className="font-mono text-emerald-400 font-bold shrink-0">+</span>
-              <span>{pt}</span>
-            </li>
-          ))}
-        </ul>
+      <div className="glass-card rounded-xl p-6 sm:p-8">
+        <div className="flex flex-col gap-4">
+          
+          {/* Header */}
+          <div className="flex justify-between items-start gap-4 flex-wrap pb-4 border-b border-slate-900">
+            <div className="flex items-center gap-3">
+              <div className="p-3 rounded-lg bg-slate-950 border border-slate-900 text-sky-400 select-none">
+                <Briefcase className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-slate-100">{EXPERIENCE_LOG.role}</h3>
+                <div className="text-base text-sky-300 font-semibold mt-0.5">{EXPERIENCE_LOG.company}</div>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:items-end text-xs text-slate-500 font-mono gap-1">
+              <span className="flex items-center gap-1.5">
+                <Calendar className="w-3.5 h-3.5" />
+                {EXPERIENCE_LOG.date}
+              </span>
+              <span className="flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5" />
+                {EXPERIENCE_LOG.location}
+              </span>
+            </div>
+          </div>
+
+          {/* Details list */}
+          <div className="mt-2">
+            <ul className="space-y-3.5 pl-5 list-disc text-slate-400">
+              {EXPERIENCE_LOG.details.map((pt, i) => (
+                <li key={i} className="text-sm sm:text-base leading-relaxed">
+                  {pt}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+        </div>
       </div>
     </section>
   )

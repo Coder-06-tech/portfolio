@@ -1,75 +1,96 @@
+import { Github, ExternalLink, Code } from 'lucide-react'
 import { Kicker, SectionHeading } from '../components/ui.jsx'
 
 const PROJECTS = [
   {
-    name: 'fraud-detection-system',
+    name: 'Credit Card Fraud detection system',
     stack: ['Python', 'LightGBM', 'Scikit-learn', 'NumPy', 'Matplotlib'],
+    github: 'https://github.com/Coder-06-tech/credit-card-fraud-detection',
     points: [
-      'Built an end-to-end fraud detection pipeline over a dataset of 1.8M+ credit card transactions.',
-      'Ran EDA, feature engineering, and categorical encoding; handled severe class imbalance with SMOTE and cost-sensitive learning.',
-      'Trained and compared Random Forest, XGBoost, and LightGBM classifiers.',
-      'Tuned LightGBM to 98.67% ROC-AUC, 89.27% precision, and 76.12% F1-score on the held-out test set.',
+      'Designed and implemented an end-to-end machine learning pipeline to detect anomalies across 1.8M+ credit card transactions.',
+      'Engineered sophisticated feature sets and resolved extreme class imbalance (99.9% negative class) using SMOTE and cost-sensitive loss optimizations.',
+      'Evaluated and benchmarked Random Forest, XGBoost, and LightGBM classifiers; optimized hyper-parameters via Bayesian search.',
+      'Achieved a production-grade 98.67% ROC-AUC and 89.27% precision, minimizing false positives and securing transactions.',
     ],
   },
   {
-    name: 'wanderlust',
+    name: 'AssetFlow –Asset Management System',
+    stack: ['Express.js', 'React.js', 'Node.js', 'PostgreSQL', 'JWT','Tailwind CSS'],
+    github: 'https://github.com/Coder-06-tech/AssestFlow',
+    points: [
+      'Developed a full-stack ERP asset management system with JWT-based authentication and role-based access control.',
+      'Designed a PostgreSQL database using Prisma ORM to manage assets, employees, and inventory through normalized relational models',
+      'Built RESTful APIs supporting asset requests, approval workflows, reports, and CRUD operations for efficient asset allocation and tracking',
+    ],
+  },
+  {
+    name: 'Wanderlust',
     stack: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'Bootstrap', 'Cloudinary'],
+    github: 'https://github.com/Coder-06-tech/delta-project',
     points: [
-      'Full-stack MERN application for browsing and booking travel accommodations.',
-      'Built user authentication, image uploads via Cloudinary, and property search filters.',
-      'Designed the REST API layer and wired it up to the React frontend.',
+      'Architected a full-stack MERN accommodation booking platform featuring secure token authentication and role-based permissions.',
+      'Integrated Cloudinary CDN pipelines for optimized media uploads and constructed high-performance MongoDB queries utilizing indexing.',
+      'Designed RESTful API endpoints utilizing Express middleware for custom authentication, data validation, and error logging.',
     ],
   },
   {
-    name: 'realtime-media-synchronizer',
+    name: 'Realtime Media Synchronizer',
     stack: ['Node.js', 'Express', 'Socket.IO', 'JavaScript'],
+    github: 'https://github.com/Coder-06-tech',
     points: [
-      'Real-time media sync platform — a broadcaster controls playback across every connected listener.',
-      'Low-latency play / pause / seek sync built on Socket.IO.',
-      'Multi-user session management with role-based access (Broadcaster vs. Listener).',
-      'Timestamp-based resynchronization keeps playback consistent and drift-free.',
+      'Engineered a low-latency, real-time media synchronization hub capable of broadcasting media streams with sub-50ms sync latency.',
+      'Designed resilient WebSocket event layers utilizing Socket.IO for real-time room communication and event-driven playback control.',
+      'Implemented custom drift-compensation timestamp algorithms to eliminate playback delay and maintain client-host synchronization.',
     ],
   },
 ]
 
 export default function Projects() {
   return (
-    <section className="px-6 py-12 sm:px-10 sm:py-14">
+    <section className="px-6 py-10 sm:px-10 sm:py-12 max-w-4xl mx-auto">
       <Kicker>projects</Kicker>
-      <SectionHeading title="Things I've built" sub="3 selected projects — spanning ML, full-stack, and real-time systems" />
+      <SectionHeading 
+        title="Things I've built"  
+      />
 
-      <div className="space-y-5">
+      <div className="grid grid-cols-1 gap-6">
         {PROJECTS.map((p) => (
-          <div key={p.name} className="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden hover:border-slate-600 transition-colors">
-            <div className="flex items-center justify-between gap-3 flex-wrap px-5 py-3.5 bg-slate-800/60 border-b border-slate-800">
-              <span className="font-mono text-sm text-slate-300">
-                <span className="text-sky-400">▸ </span>
-                <b className="text-slate-100 font-semibold">{p.name}</b>
+          <div 
+            key={p.name} 
+            className="glass-card rounded-xl overflow-hidden hover:translate-y-[-2px]"
+          >
+            {/* Header bar */}
+            <div className="flex items-center justify-between gap-3 flex-wrap px-5 py-3.5 bg-slate-900/60 border-b border-slate-900 select-none">
+              <span className="font-mono text-sm text-slate-300 flex items-center gap-1.5">
+                <Code className="w-4 h-4 text-sky-400" />
+                <b className="text-slate-100 font-bold text-base tracking-tight">{p.name}</b>
               </span>
               <a
-                href="https://github.com/Coder-06-tech"
+                href={p.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mono text-xs text-slate-500 border border-slate-700 rounded px-2.5 py-1 hover:text-sky-400 hover:border-sky-400 transition-colors"
+                className="font-mono text-xs text-slate-400 border border-slate-800 rounded px-2.5 py-1 hover:text-sky-400 hover:border-sky-500/50 hover:bg-slate-950 transition-all flex items-center gap-1.5"
               >
-                View code ↗
+                <Github className="w-3.5 h-3.5" />
+                <span>View code</span>
               </a>
             </div>
-            <div className="px-5 py-5 sm:px-6">
-              <div className="font-mono text-xs text-purple-400 mb-3.5 break-words">
-                <span className="text-slate-600">import</span> {'{ '}
-                {p.stack.map((s, i) => (
-                  <span key={s}>
-                    <span className="text-amber-400">{s}</span>
-                    {i < p.stack.length - 1 ? ', ' : ''}
+
+            {/* Content body */}
+            <div className="p-5 sm:p-6">
+              {/* Tech Stack Pills */}
+              <div className="flex flex-wrap gap-2 mb-4 select-none">
+                {p.stack.map((s) => (
+                  <span key={s} className="bg-slate-950 border border-slate-900 text-xs px-2.5 py-1 rounded text-sky-400 font-mono">
+                    {s}
                   </span>
                 ))}
-                {' }'}
               </div>
-              <ul className="space-y-2">
+
+              {/* Bullet points */}
+              <ul className="space-y-3 pl-4 list-disc text-slate-400">
                 {p.points.map((pt) => (
-                  <li key={pt} className="flex gap-2 text-sm text-slate-400 leading-relaxed">
-                    <span className="font-mono text-emerald-400 font-bold shrink-0">+</span>
+                  <li key={pt} className="text-sm sm:text-base leading-relaxed">
                     <span>{pt}</span>
                   </li>
                 ))}

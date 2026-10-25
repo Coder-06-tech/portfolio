@@ -1,81 +1,108 @@
-import { Link } from 'react-router-dom'
-import { ArrowRight } from 'lucide-react'
+import { Link } from "react-router-dom";
+import { ArrowRight, MapPin, Award, Search, Sparkles } from "lucide-react";
 
 export default function About() {
   return (
-    <section className="px-6 py-12 sm:px-10 sm:py-14">
-      <div className="font-mono text-sm text-slate-400 mb-4">
-        <span className="text-emerald-400">$</span> whoami
-      </div>
-      <h1 className="text-4xl sm:text-6xl font-bold text-slate-100 tracking-tight leading-none mb-2">
-        Simron Sarita
-        <span className="inline-block w-2 ml-1 bg-amber-400 animate-pulse">&nbsp;</span>
-      </h1>
-      <div className="font-mono text-base text-amber-400 mt-3 mb-6">
-        <span className="text-slate-600">&gt;</span> B.Tech CSE @ IIIT Bhubaneswar — Full-Stack &amp; ML Engineer
-      </div>
-      <p className="max-w-xl text-slate-400 text-base mb-8">
-        I build things end to end — from training a fraud-detection model on 1.8M+ transactions to
-        shipping the React interface someone actually clicks on. Currently a sophomore, always
-        shipping something on the side.
-      </p>
-
-      <div className="flex flex-wrap gap-4 mb-11">
-        <Link
-          to="/projects"
-          className="font-mono text-sm px-5 py-3 rounded-md bg-sky-400 text-slate-950 font-semibold inline-flex items-center gap-2 hover:bg-sky-300 transition-colors"
-        >
-          View projects <ArrowRight className="w-4 h-4" />
-        </Link>
-        <Link
-          to="/contact"
-          className="font-mono text-sm px-5 py-3 rounded-md border border-slate-700 text-slate-400 hover:text-slate-100 hover:border-slate-500 transition-colors"
-        >
-          Get in touch
-        </Link>
-      </div>
-
-      <div className="flex flex-wrap gap-7 font-mono text-xs text-slate-600 mb-12">
-        <span><b className="text-slate-400 font-medium">Location</b> Bhubaneswar, Odisha, IN</span>
-        <span><b className="text-slate-400 font-medium">CGPA</b> 9.06 / 10</span>
-        <span><b className="text-slate-400 font-medium">Status</b> Open to internships</span>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-[1.3fr_1fr] gap-10">
+    <section className="px-6 py-10 sm:px-10 sm:py-12 max-w-4xl mx-auto">
+      <div className="flex flex-col gap-6">
         <div>
-          <div className="font-mono text-xs text-emerald-400 opacity-80 mb-2">
-            <span className="text-slate-600">// </span>a bit more context
+          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-none text-slate-100 mb-3">
+            Hi, I'm{" "}
+            <span className="bg-gradient-to-r from-sky-400 via-teal-300 to-indigo-400 bg-clip-text text-transparent">
+              Simron Sarita
+            </span>
+          </h1>
+
+          <div className="font-mono text-sm sm:text-base text-amber-400 flex items-center gap-1.5 mt-2">
+            <span className="text-slate-600 font-bold">&gt;</span>
+            <span>
+              B.Tech CSE @ IIIT Bhubaneswar &bull; Full-Stack Developer &bull;
+              ML Engineer
+            </span>
           </div>
-          <p className="text-slate-400 text-sm mb-4 leading-relaxed">
-            I'm a third-year Computer Science student at IIIT Bhubaneswar, splitting my time
-            between machine learning (feature engineering, imbalanced classification, model
-            tuning) and full-stack web development (React, Node, MongoDB). I like projects with a
-            real, measurable outcome — a precision score, a working real-time sync, a UI that
-            matches the Figma pixel-for-pixel.
-          </p>
-          <p className="text-slate-400 text-sm leading-relaxed">
-            Previously interned as a Frontend Developer at Vishvena Techno Solutions, converting
-            designs into production React components.
-          </p>
         </div>
-        <div className="bg-slate-900 border border-slate-800 rounded-lg p-5 font-mono text-xs h-fit">
-          {[
-            ['degree', 'B.Tech, CSE'],
-            ['university', 'IIIT Bhubaneswar'],
-            ['graduating', '2028'],
-            ['focus', 'Full-stack · ML'],
-          ].map(([k, v]) => (
-            <div key={k} className="flex justify-between items-baseline py-2 border-b border-dashed border-slate-800">
-              <span className="text-slate-600">{k}</span>
-              <span className="text-slate-200">{v}</span>
+
+        <p className="text-slate-400 text-base sm:text-lg leading-relaxed max-w-2xl mt-2">
+          I build scalable web applications and intelligent machine learning
+          solutions. From developing end-to-end MERN applications to training
+          fraud detection models on large transactions, I enjoy solving
+          real-world problems through clean architecture, efficient algorithms,
+          and modern technologies.
+        </p>
+
+        <div className="flex flex-wrap gap-3.5 mt-4">
+          <Link
+            to="/projects"
+            className="font-mono text-sm px-6 py-3.5 rounded bg-sky-500 text-slate-950 font-semibold inline-flex items-center gap-2 hover:bg-sky-400 active:scale-[0.98] transition-all shadow-[0_0_20px_rgba(56,189,248,0.2)] hover:shadow-[0_0_25px_rgba(56,189,248,0.35)]"
+          >
+            View projects <ArrowRight className="w-4 h-4" />
+          </Link>
+          <a
+            href="/resume.pdf"
+            download="Simron_Sarita_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-sm px-6 py-3.5 rounded border border-slate-800 text-slate-400 bg-slate-900/30 hover:text-slate-100 hover:border-slate-700 active:scale-[0.98] transition-all"
+          >
+            Download Resume
+          </a>
+        </div>
+
+        <div className="flex flex-wrap gap-5 font-mono text-xs text-slate-500 mt-6 py-4 border-y border-slate-900 select-none">
+          <span className="flex items-center gap-1.5">
+            <MapPin className="w-4 h-4 text-slate-600" />
+            <b className="text-slate-400 font-medium">Location:</b> Bhubaneswar,
+            IN
+          </span>
+          <span className="flex items-center gap-1.5">
+            <Award className="w-4 h-4 text-slate-600" />
+            <b className="text-slate-400 font-medium">CGPA:</b> 9.06
+          </span>
+        </div>
+
+        {/* Details Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-8 mt-6">
+          <div className="space-y-4">
+            <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
+              I'm a B.Tech Computer Science student at IIIT Bhubaneswar with a passion for full-stack development and machine learning. I enjoy building scalable web applications, solving complex problems, and continuously learning new technologies. Currently, I'm focused on developing production-ready software while improving my problem-solving skills through Data Structures & Algorithms.
+            </p>
+          </div>
+
+          <div className="glass-card rounded-xl p-6 h-fit shadow-lg relative overflow-hidden select-none">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-sky-500/5 rounded-full blur-2xl pointer-events-none" />
+
+            <h4 className="text-slate-200 text-base font-bold mb-4 flex items-center gap-2 border-b border-slate-900 pb-3">
+              <Sparkles className="w-4 h-4 text-amber-400" />
+              <span>Quick Profile</span>
+            </h4>
+
+            <div className="space-y-4 text-sm">
+              <div className="flex justify-between border-b border-slate-900/60 pb-2">
+                <span className="text-slate-500">Degree</span>
+                <span className="text-slate-300 font-semibold">
+                  B.Tech Computer Science
+                </span>
+              </div>
+              <div className="flex justify-between border-b border-slate-900/60 pb-2">
+                <span className="text-slate-500">Institution</span>
+                <span className="text-slate-300 font-semibold">
+                  IIIT Bhubaneswar
+                </span>
+              </div>
+              <div className="flex justify-between border-b border-slate-900/60 pb-2">
+                <span className="text-slate-500">Graduation Year</span>
+                <span className="text-slate-300 font-semibold">2028</span>
+              </div>
+              <div className="flex justify-between border-b border-slate-900/60 pb-2">
+                <span className="text-slate-500">Specialization</span>
+                <span className="text-slate-300 font-semibold">
+                  Full-Stack &amp; ML
+                </span>
+              </div>
             </div>
-          ))}
-          <div className="flex justify-between items-baseline py-2">
-            <span className="text-slate-600">best_model_score</span>
-            <span className="text-emerald-400">98.67% ROC-AUC</span>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

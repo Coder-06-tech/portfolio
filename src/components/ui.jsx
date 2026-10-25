@@ -1,16 +1,20 @@
 export function Kicker({ children }) {
   return (
-    <div className="font-mono text-xs text-sky-400 tracking-wide mb-3">
-      <span className="text-purple-400">const</span> {children} <span className="text-slate-500">=</span>
+    <div className="inline-flex items-center font-mono text-[10px] px-2.5 py-1 rounded bg-sky-950/40 border border-sky-900/60 text-sky-400 mb-4 uppercase tracking-wider font-bold select-none">
+      <span>{children}</span>
     </div>
   )
 }
 
 export function SectionHeading({ title, sub }) {
   return (
-    <>
-      <h2 className="text-2xl font-bold text-slate-100 tracking-tight mb-1">{title}</h2>
-      <div className="font-mono text-xs text-slate-600 mb-9">{sub}</div>
-    </>
+    <div className="mb-8 select-none">
+      <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight leading-none mb-2">
+        {title}
+      </h2>
+      <p className="text-sm text-slate-500 mt-1">
+        {sub}
+      </p>
+    </div>
   )
 }
